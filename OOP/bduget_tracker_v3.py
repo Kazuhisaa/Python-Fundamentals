@@ -4,7 +4,7 @@ import json
 class budget_tracker:
     def __init__(self):
         self.expense = []
-        self.filename = "gastos.json"
+        self.filename = "gastoses.json"
         self.load_expenses()
 
 
@@ -57,7 +57,7 @@ if __name__ == "__main__":
     while True:
         try:
             print("=================")
-            print("BUDGET TRACKER V2")
+            print("BUDGET TRACKER V3")
             print("=================")
             print("1. Add Expesnes")
             print("2. View Expenses")
