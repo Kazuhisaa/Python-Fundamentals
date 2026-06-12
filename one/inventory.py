@@ -36,6 +36,27 @@ class Product:
     def product_name(self):
         return self._name
     
+    @product_name.setter
+    def product_name(self,new_name):
+        self._name = new_name
+    
+    @price.setter
+    def price(self,new_price):
+        if new_price <= 0:
+            print("Price must be greater than 0")
+        else:
+            self._price = new_price
+
+    def replenish_stock(self,qty):
+        if qty <= 0:
+            print("Quantity must be a Postive Number")
+        else:
+            self._stock += qty
+            print("Succesfully replenish Stocks")
+
+
+
+    
 class Clothing(Product):
     def __init__ (self,productID,price,name,stocks,size,material):
         super().__init__(productID,price,name,stocks)
@@ -74,7 +95,23 @@ class Inventory:
     def search_product(self,query):
 
         for product in self._products:
-            print(product.get_details()) 
-            if product.product_id.lower() == query.lower() or product.name.lower() == query.lower():
+            if product.product_id.lower() == query.lower() or product.product_name.lower() == query.lower():
                 return product
         return 
+
+    def update_product_info(self,product_id, new_name,new_price):
+        product = self.search_product(product_id)
+        if product:
+            product.product_name = new_name
+            product.price = new_price
+    
+    def replenish_stock(self,product_id,qty):
+        product = self.search_product(product_id)
+        if product:
+            product.replenish_stock(qty)
+
+    def delete_product(self,product_id):
+        product = self.search_product(product_id)
+        if product:
+            self._products.remove(product)
+        
