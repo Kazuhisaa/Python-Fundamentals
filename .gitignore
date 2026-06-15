@@ -1,2 +1,4 @@
 cd Python-Fundamentals
 # Dito ka mag-git status, git pull, etc.Python-Fundamentals/
+*venv
+*env
