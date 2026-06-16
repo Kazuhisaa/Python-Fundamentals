@@ -1,11 +1,14 @@
-class Product:
+import abc
+ 
+
+class Product(abc.ABC):
     def __init__(self,productID,price,name,stocks):
         self._productID = productID
         self._price = price
         self._name = name
         self._stock = stocks
 
-
+    @abc.abstractmethod
     def get_details(self):
         return (f"Product_ID: {self._productID} | Name: {self._name} | Stocks: {self._stock} | Price: {self._price}")
 
