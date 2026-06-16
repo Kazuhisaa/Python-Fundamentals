@@ -63,12 +63,16 @@ class Clothing(Product):
 
         self._size = size
         self._material = material
+    def get_details(self):
+        return super().get_details() + f" | Size: {self._size} | Material: {self._material}"
 
 class Electronics(Product):
     def __init__(self, productID,price,name,stocks,warranty):
         super().__init__(productID,price,name,stocks)
 
         self._warranty = warranty
+    def get_details(self):
+        return super().get_details() + f" | Warranty: {self._warranty}"
 
 class Food(Product):
     def __init__(self,productID,price,name,stocks,expiration,is_vegan):
@@ -76,6 +80,10 @@ class Food(Product):
 
         self._expiration = expiration
         self._is_vegan = is_vegan
+
+    def get_details(self):
+        vegan_status = "Yes" if self._is_vegan else "No"
+        return super().get_details() + f" | Expiration:{self._expiration} | Vegan: {vegan_status}"
 
 class Inventory:
 
